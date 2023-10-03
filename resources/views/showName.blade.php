@@ -4,11 +4,11 @@
 {{--لرؤية كود ال php المقابل للكود المكتوب ضمن صفحة ال blade نذهب إلى storage ثم إلى framework ثم الى views رح نشوف فيها جميع الصفحات المقابلة لصفحات الblade --}}
 {!! $username !!}
 
-@if( $username === 'Rawan Mansour' )
+@name($username)
     admin
 @else
     user
-@endif
+@endname
 
 @for($i=0;$i<=10;$i++)
     {{ $i }}
