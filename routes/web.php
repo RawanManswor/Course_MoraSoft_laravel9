@@ -18,7 +18,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-//Section Route
+//Start Section Route
 
 //نستخدم route get لتنقل بين الصفحات فقط
 Route::get('users',function(){
@@ -53,3 +53,18 @@ Route::get('/show/{name}',function (string $name){
     }
         return 'user';
 });
+//End Section Route
+
+//Start Blade System (Template Engine)
+Route::get('show_name',function(){
+    $username = 'Rawan Mansour';
+    return view('showName',compact('username'));
+
+});
+Route::get('navbar',function (){
+    return view('Inheritance.navbar');
+});
+Route::get('posts',function (){
+    return view('posts');
+});
+//End Blade System (Template Engine)
