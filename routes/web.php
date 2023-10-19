@@ -2,7 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
-
+use App\Http\Controllers\InvokeController;
+use App\Http\Controllers\CrudResourseController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -68,3 +69,16 @@ Route::get('posts',function (){
     return view('posts');
 });
 //End Blade System (Template Engine)
+
+// Start Controller Resource
+
+//دالة only بحدد فيها الدوال المسموح أن تشتغل بس
+//دالة except نحدد فيها الدوال الغير مسموح ان تشتغل أي المستثنية من العمل نحدد الدوال المستبعدة من التنفيذ
+Route::resource('crud',CrudResourseController::class)->only(['show']);
+// End Controller Resource
+
+// Start Controller Invoke
+//لكتابة route من أجل controller invoke لا نذكر اسم الدالة لأنه عندما يرى هذا النوع من الروت يفحص هل هذا الكونترولر انفوك وهل يحتوي على method __invoke أي الدالو الوحيدة التي ميستدعيا الروت واذا لم يكن يحتوي يعرض خطأ يجب ان نذكر ضمن الروت مع اسم الكونترولر اسم الدالة
+//إذا كان route يحتوي فقط على اسم الروت واسم الكونترول يفحص هل هذا الكونترول من نوع invoke وبداخله دالة invoke() يقوم بتنفيذها و إلا يظهر خطأ
+Route::get('singleAction',InvokeController::class);
+// End Controller Invoke
